@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stellar Soft</title>
+
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Poppins, sans-serif;
+      background: #fafafa;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+    .logo img { height: 40px; }
+    nav { display: flex; gap: 2rem; }
+    nav a {
+      text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s;
+    }
+    nav a:hover { color: #0073e6; }
+    .cart a { font-size: 1.5rem; text-decoration: none; color: #333; }
+
+    /* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin-bottom: 50px;
+}
+
+.hero .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  padding-left: 60px;          
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-align: left;            
+}
+
+.hero .swiper-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero .slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero .btn {
+  background: #fff;
+  color: #000;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.hero .btn:hover {
+  background: #eee;
+}
+
+
+    /* FEATURED */
+    .featured { padding: 0 2rem 50px 2rem; }
+    .featured h2 { text-align: center; margin-bottom: 30px; }
+    .product-card {
+      background: #fff; padding: 20px; border-radius: 12px; text-align: center;
+      display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .product-card img { width: 100%; height: 240px; object-fit: contain; border-radius: 8px; }
+    .product-card p { margin: 12px 0 6px; font-weight: 500; font-size: 1rem; }
+    .product-card span { font-weight: bold; color: #0073e6; font-size: 1.1rem; }
+
+    .featured-swiper .swiper-button-next,
+    .featured-swiper .swiper-button-prev {
+      color: #000; background: #fff; width: 42px; height: 42px; border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; top: 45%;
+    }
+    .featured-swiper .swiper-button-prev { left: -25px; }
+    .featured-swiper .swiper-button-next { right: -25px; }
+    .featured-swiper .swiper-button-next::after,
+    .featured-swiper .swiper-button-prev::after { font-size: 18px; font-weight: bold; }
+    .swiper-pagination-bullet { background: #aaa; opacity: 0.6; }
+    .swiper-pagination-bullet-active { background: #fff; opacity: 1; }
+
+    /* FAQ */
+    .faq { padding: 60px 30px; background: #fff; text-align: center; }
+    .faq-title { font-size: 2rem; margin-bottom: 15px; }
+    .faq-subtitle { font-size: 1rem; color: #555; margin-bottom: 30px; max-width: 600px; margin-inline: auto; line-height: 1.5; }
+    .faq-list { max-width: 800px; margin: 0 auto; text-align: left; }
+    .faq-list details {
+      background: #f9f9f9; border-radius: 12px; margin-bottom: 15px; padding: 18px 20px; cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: all 0.3s ease;
+    }
+    .faq-list summary { font-weight: 600; font-size: 1.05rem; list-style: none; position: relative; padding-right: 25px; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "➕"; position: absolute; right: 0; font-size: 1.2rem; transition: transform 0.3s; }
+    details[open] summary::after { content: "➖"; }
+    .faq-list p { margin-top: 12px; color: #444; font-size: 0.95rem; line-height: 1.5; }
+
+    /* HELP FORM */
+    .help-section { padding: 60px 20px; background: #f9f9f9; text-align: center; }
+    .help-section h2 { font-size: 28px; margin-bottom: 20px; }
+    .help-form { max-width: 500px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+    .help-form input, .help-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+    .help-form button { background: #0073e6; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+    .help-form button:hover { background: #005bb5; }
+
+    /* FOOTER */
+    footer { background: #111; color: #fff; padding: 50px 20px 20px; }
+    .footer-container {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto 30px; align-items: start;
+    }
+    .footer-section h4 { font-size: 1.1rem; margin-bottom: 12px; }
+    .footer-section ul { list-style: none; padding: 0; margin: 0; }
+    .footer-section ul li { margin-bottom: 8px; }
+    .footer-section a { color: #ccc; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+    .footer-section a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+      font-size: 0.85rem; color: #aaa; border-top: 1px solid #333; padding-top: 15px;
+    }
+    .footer-links { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a { color: #aaa; font-size: 0.9rem; text-decoration: none; }
+    .footer-links a:hover { color: #fff; }
+
+    /* POPUP */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;                  
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+    .popup.show { display: flex; }    
+
+    .popup-content {
+      background: #fff; border-radius: 12px; max-width: 860px; width: 100%;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.4); position: relative; overflow: hidden;
+    }
+    .popup-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; }
+    .popup-text { padding: 28px; }
+    .popup-text h2 { font-size: 28px; margin: 0 0 10px; color: #000; }
+    .popup-text p { font-size: 14px; color: #555; margin: 0 0 16px; }
+    #popupForm { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+    #popupForm input {
+      padding: 12px; font-size: 14px; border: 1px solid #ccc; border-radius: 8px; outline: none;
+    }
+    #popupForm button {
+      padding: 12px 22px; background: #000; color: #fff; border: 0; border-radius: 8px; cursor: pointer;
+    }
+    #popupForm button:hover { filter: brightness(0.92); }
+
+    .popup-image { display: flex; align-items: stretch; }
+    .popup-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    .close-popup {
+      position: absolute; top: 10px; right: 12px; font-size: 24px; line-height: 1;
+      color: #333; cursor: pointer; user-select: none;
+    }
+    .close-popup:hover { color: #e00; }
+
+    /* Адаптивність */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .popup-inner { grid-template-columns: 1fr; }
+      .popup-image { order: 2; }
+      #popupForm { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .footer-container { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><a href="#"><img src="images/logo.png" alt="Logo"></a></div>
+    <nav>
+      <a href="#">New & Featured</a>
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">Kids</a>
+    </nav>
+    <div class="cart"><a href="#cart">🛒</a></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image: url('images/Slide - 1.png')">
+        <div class="slide-content">
+          <h1>MORE THAN JUST SHOES - IT’S A PART OF YOUR STORY.</h1>
+          <p>Original sneakers from Nike and other top brands that make every step feel special.</p>
+          <a href="#" class="btn">Shop the Collection</a>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image: url('images/Slide - 2.png')">
+        <div class="slide-content">
+          <h1>SUMMER ESSENTIALS</h1>
+          <p>Fresh styles for sunny days.</p>
+          <a href="#" class="btn">Shop the Collection</a>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="featured">
+    <h2>Featured Collection</h2>
+    <div class="swiper featured-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a href="product1.html" class="product-card">
+            <img src="images/image 1.png" alt="Nike 1">
+            <p>Nike Revolution 7</p>
+            <span>$640</span>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="product2.html" class="product-card">
+            <img src="images/image 7.png" alt="Nike 2">
+            <p>Nike Pegasus 41</p>
+            <span>$720</span>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="product3.html" class="product-card">
+            <img src="images/image 11.png" alt="Nike 3">
+            <p>Nike Air Max</p>
+            <span>$850</span>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="product4.html" class="product-card">
+            <img src="images/image 13.png" alt="Nike 4">
+            <p>Nike Streakfly 2</p>
+            <span>$300</span>
+          </a>
+        </div>
+      </div>
+      <div class="swiper-button-prev featured-prev"></div>
+      <div class="swiper-button-next featured-next"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="faq-title">Frequently asked questions</h2>
+    <p class="faq-subtitle">Answers to our most frequently asked questions are just one click away.</p>
+    <div class="faq-list">
+      <details>
+        <summary>What are Nike’s delivery options?</summary>
+        <p>Nike offers standard, express, and same-day delivery options depending on your location.</p>
+      </details>
+      <details>
+        <summary>What is Nike’s returns policy?</summary>
+        <p>When you shop Nike online, either in the Nike App or on Nike.com, you can return items within 30 days of purchase (some exceptions apply).</p>
+      </details>
+      <details>
+        <summary>Where is my Nike order?</summary>
+        <p>Track your order in your Nike account or via the tracking link sent to your email after purchase.</p>
+      </details>
+      <details>
+        <summary>How do I find the right size and fit?</summary>
+        <p>Use the size guide on each product page to find your perfect fit.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- HELP FORM -->
+  <section class="help-section">
+    <h2>Need Help?</h2>
+    <form class="help-form" id="helpForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="text" id="number" placeholder="Phone Number" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Find a Store</a></li>
+          <li><a href="#">Nike Journal</a></li>
+          <li><a href="#">Become a Member</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Promo Codes</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Order Status</a></li>
+          <li><a href="#">Shipping and Delivery</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Payment Options</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Nike</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Investors</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#">New & Featured</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">Kids</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Nike, Inc. All rights reserved</p>
+      <div class="footer-links">
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy & Cookie Policy</a>
+        <a href="#">Privacy & Cookie Setting</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup" aria-hidden="true">
+    <div class="popup-content" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+      <span id="closePopup" class="close-popup" aria-label="Close popup">&times;</span>
+      <div class="popup-inner">
+        <div class="popup-text">
+          <h2 id="popupTitle">HERE’S $10 OFF YOUR FIRST ORDER!</h2>
+          <p>Join our newsletter and get a $10 discount code sent straight to your inbox. New customers only.</p>
+          <form id="popupForm" novalidate>
+            <input type="email" id="popupEmail" placeholder="Enter Email" required />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+        <div class="popup-image">
+          <img src="images/nike-just-do-it 1.png" alt="Nike Just Do It">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swiper + Popup JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Hero slider
+    new Swiper(".hero", {
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true }
+    });
+
+    // Featured Collection
+    const featuredSwiper = new Swiper(".featured-swiper", {
+      loop: false,
+      slidesPerView: 4,
+      spaceBetween: 20,
+      navigation: { nextEl: ".featured-next", prevEl: ".featured-prev" },
+      breakpoints: {
+        0: { slidesPerView: 1.1, spaceBetween: 10 },
+        600: { slidesPerView: 2.5, spaceBetween: 15 },
+        1024: { slidesPerView: 4, spaceBetween: 20 }
+      },
+      on: {
+        slideChange() {
+          const prevBtn = document.querySelector(".featured-prev");
+          const nextBtn = document.querySelector(".featured-next");
+          prevBtn.style.display = this.isBeginning ? "none" : "flex";
+          nextBtn.style.display = this.isEnd ? "none" : "flex";
+        }
+      }
+    });
+    document.querySelector(".featured-prev").style.display = "none";
+
+    // Help form (demo)
+    document.getElementById("helpForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Thank you!");
+      this.reset();
+    });
+
+    // ===== POPUP LOGIC =====
+    document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup");
+  const btnClose = document.getElementById("closePopup");
+  const form = document.getElementById("popupForm");
+
+  
+  const LS_KEY = "welcomePopupDismissed_v2";
+  const FORCE = new URLSearchParams(location.search).get("popup") === "1";
+
+  const isDismissed = () => localStorage.getItem(LS_KEY) === "1";
+  const markDismissed = () => localStorage.setItem(LS_KEY, "1");
+
+  const open = () => popup.classList.add("show");
+  const close = () => { popup.classList.remove("show"); markDismissed(); };
+
+  if (!isDismissed() || FORCE) {
+    setTimeout(open, 1000); 
+  }
+
+  btnClose.addEventListener("click", close);                 
+  popup.addEventListener("click", e => { if (e.target === popup) close(); }); 
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); }); 
+  form.addEventListener("submit", e => { e.preventDefault(); close(); }); 
+});
+  </script>
+</body>
+</html>
